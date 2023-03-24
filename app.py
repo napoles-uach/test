@@ -13,14 +13,14 @@ submit = st.button("Submit new post")
 
 # Once the user has submitted, upload it to the database
 if title and url and submit:
-	doc_ref = db.collection("posts").document(title)
+	doc_ref = db.collection("prompts").document("prompt")
 	doc_ref.set({
 		"title": title,
 		"url": url
 	})
 
 # And then render each post, using some light Markdown
-posts_ref = db.collection("posts")
+posts_ref = db.collection("prompts")
 for doc in posts_ref.stream():
 	post = doc.to_dict()
 	title = post["title"]
